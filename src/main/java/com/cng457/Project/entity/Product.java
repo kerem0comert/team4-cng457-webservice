@@ -15,7 +15,6 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Product {
     @Id private int productId;
-    private String brand;
     private String model;
     private String batteryLife;
     private String screenSize;
@@ -33,4 +32,7 @@ public abstract class Product {
             orphanRemoval = true
     )
     private List<ExtraFeatures> extraFeaturesList = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Brand brand;
 }
