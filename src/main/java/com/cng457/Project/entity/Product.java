@@ -26,12 +26,9 @@ public abstract class Product {
     )
     private List<Review> reviewList = new ArrayList<>();
 
-    @OneToMany(
-            mappedBy = "product",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<ExtraFeatures> extraFeaturesList = new ArrayList<>();
+    @ManyToMany (mappedBy = "productList")
+    private List<ExtraFeatures> extraFeaturesList;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Brand brand;
