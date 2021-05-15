@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -13,7 +14,12 @@ import javax.persistence.*;
 public class ExtraFeatures {
     @Id private int efId;
     private String description;
+    private String featureName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Product product;
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable (name = "ProductExtraFeatures",
+            joinColumns = @JoinColumn (name = "efId"),
+            inverseJoinColumns = @JoinColumn (name = "productId"))
+    private List<Product> productList;
+
 }
