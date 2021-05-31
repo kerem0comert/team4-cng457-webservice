@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "productId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "productId", scope = Product.class)
 public abstract class Product {
     @Id private int productId;
     private String model;
@@ -31,7 +31,7 @@ public abstract class Product {
     )
     private List<Review> reviewList = new ArrayList<>();
 
-    @ManyToMany (mappedBy = "productList")
+    @ManyToMany (mappedBy = "productList", fetch = FetchType.EAGER)
     private List<ExtraFeatures> extraFeaturesList;
 
     @ManyToOne(fetch = FetchType.LAZY)
