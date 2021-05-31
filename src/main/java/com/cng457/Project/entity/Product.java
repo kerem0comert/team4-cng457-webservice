@@ -1,5 +1,9 @@
 package com.cng457.Project.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "productId")
 public abstract class Product {
     @Id private int productId;
     private String model;
@@ -29,7 +34,7 @@ public abstract class Product {
     @ManyToMany (mappedBy = "productList")
     private List<ExtraFeatures> extraFeaturesList;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="brandId")
     private Brand brand;
 }

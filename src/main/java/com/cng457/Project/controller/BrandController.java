@@ -11,12 +11,12 @@ public class BrandController {
     BrandService brandService;
 
     @PostMapping("/addBrand")
-    public Brand saveBrand(@RequestBody Brand b){
+    public Brand saveBrand(@RequestBody Brand b) {
         return brandService.saveBrand(b);
     }
 
     @GetMapping("/getbrand/{id}")
-    public Brand getBrand(@PathVariable int id){
+    public Brand getBrand(@PathVariable int id) {
         return brandService.getBrand(id);
     }
 }
