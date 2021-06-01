@@ -5,6 +5,8 @@ import com.cng457.Project.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class PhoneController {
     @Autowired
@@ -18,5 +20,10 @@ public class PhoneController {
     @GetMapping("/getphone/{id}")
     public Phone getPhone(@PathVariable Integer id){
         return phoneService.getPhone(id);
+    }
+
+    @GetMapping("/getallphones")
+    public List<Phone> getAllPhones(){
+        return phoneService.getAllPhones();
     }
 }

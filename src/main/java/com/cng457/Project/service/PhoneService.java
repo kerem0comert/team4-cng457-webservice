@@ -5,6 +5,8 @@ import com.cng457.Project.repository.PhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PhoneService {
     @Autowired
@@ -16,5 +18,9 @@ public class PhoneService {
 
     public Phone getPhone(int id){
         return phoneRepository.findById(id).orElse(null);
+    }
+
+    public List<Phone> getAllPhones(){
+        return phoneRepository.getAllPhones();
     }
 }
