@@ -31,7 +31,10 @@ public abstract class Product {
     )
     private List<Review> reviewList = new ArrayList<>();
 
-    @ManyToMany (mappedBy = "productList", fetch = FetchType.EAGER)
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable (name = "ProductExtraFeatures",
+            joinColumns = @JoinColumn (name = "productId", updatable=false,insertable=false, nullable = false),
+            inverseJoinColumns = @JoinColumn (name = "efId", updatable=false,insertable=false, nullable = false))
     private List<ExtraFeatures> extraFeaturesList;
 
     @ManyToOne(fetch = FetchType.LAZY)

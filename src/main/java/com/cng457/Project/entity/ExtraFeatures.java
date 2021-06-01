@@ -19,10 +19,7 @@ public class ExtraFeatures {
     private String description;
     private String featureName;
 
-    @ManyToMany (targetEntity = Product.class, fetch = FetchType.EAGER)
-    @JoinTable (name = "ProductExtraFeatures",
-            joinColumns = @JoinColumn (name = "efId", updatable=false,insertable=false, nullable = false,  referencedColumnName = "efId"),
-            inverseJoinColumns = @JoinColumn (name = "productId", updatable=false,insertable=false, nullable = false,  referencedColumnName = "productId"))
+    @ManyToMany (mappedBy = "extraFeaturesList", fetch = FetchType.EAGER)
     private List<Product> productList;
 
 }
