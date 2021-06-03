@@ -41,7 +41,9 @@ public class ComputerController {
                                                  @RequestParam(required = false) String screenResolution,
                                                  @RequestParam(required = false) String processor,
                                                  @RequestParam(required = false) Integer memory,
-                                                 @RequestParam(required = false) Integer storageCapacity) {
+                                                 @RequestParam(required = false) Integer storageCapacity,
+                                                 @RequestParam(required = false) String extraFeatures,
+                                                 @RequestParam(required = false) String brand) {
         List<Computer> computers = computerService.getAllComputers();
         if (model != null) {
             computers = computers.stream()
@@ -78,7 +80,20 @@ public class ComputerController {
                     .filter(x -> storageCapacity.equals(x.getStorageCapacity()))
                     .collect(Collectors.toList());
         }
+        if (extraFeatures != null) {
+            String[] extraFeaturesList = extraFeatures.split(",");
+
+            for (String theExtraFeature: extraFeaturesList) {
+                computers = computers.stream()
+                        .filter(x -> x.getExtraFeaturesList().stream().anyMatch(t -> t.getFeatureName().equals(theExtraFeature)))
+                        .collect(Collectors.toList());
+            }
+        }
+        if (brand != null) {
+            computers = computers.stream()
+                    .filter(x -> x.getBrand().getBrandName().equals(brand))
+                    .collect(Collectors.toList());
+        }
         return computers;
     }
-
 }
