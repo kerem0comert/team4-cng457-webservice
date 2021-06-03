@@ -1,5 +1,7 @@
 package com.cng457.Project.controller;
 
+import com.cng457.Project.entity.Brand;
+import com.cng457.Project.entity.Computer;
 import com.cng457.Project.entity.Phone;
 import com.cng457.Project.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,15 @@ public class PhoneController {
     @GetMapping("/getallphones")
     public List<Phone> getAllPhones(){
         return phoneService.getAllPhones();
+    }
+
+    @GetMapping("/getphonewithid/{id}")
+    public List<Phone> getPhoneWithId(@PathVariable int id) {
+        return phoneService.getPhoneWithId(id);
+    }
+
+    @GetMapping("/getphonewithbrandname/{brandName}")
+    public List<Phone> getPhoneWithBrandName(@PathVariable String brandName) {
+        return phoneService.getPhoneWithBrandName(brandName);
     }
 }

@@ -28,4 +28,8 @@ public class ComputerService {
     public List<Computer> getComputerWithId(int id) {
         return computerRepository.getComputerWithId(id);
     }
+
+    public List<Computer> getComputerWithBrandName(String brandName) {
+        return computerRepository.getComputerWithBrandName(brandName);
+    }
 }

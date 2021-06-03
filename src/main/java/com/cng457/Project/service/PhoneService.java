@@ -1,5 +1,7 @@
 package com.cng457.Project.service;
 
+import com.cng457.Project.entity.Brand;
+import com.cng457.Project.entity.Computer;
 import com.cng457.Project.entity.Phone;
 import com.cng457.Project.repository.PhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +24,13 @@ public class PhoneService {
 
     public List<Phone> getAllPhones(){
         return phoneRepository.getAllPhones();
+    }
+
+    public List<Phone> getPhoneWithId(int id) {
+        return phoneRepository.getPhoneWithId(id);
+    }
+
+    public List<Phone> getPhoneWithBrandName(String brandName) {
+        return phoneRepository.getPhoneWithBrandName(brandName);
     }
 }
