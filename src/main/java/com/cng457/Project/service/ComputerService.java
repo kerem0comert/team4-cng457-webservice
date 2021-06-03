@@ -29,7 +29,12 @@ public class ComputerService {
         return computerRepository.getComputerWithId(id);
     }
 
+    public List<Computer> getComputerWithBrandName(String brandName) {
+        return computerRepository.getComputerWithBrandName(brandName);
+    }
+
     public List<Computer> getComputerByPredicate(List<Computer> computers) {
         return computers;
+
     }
 }
