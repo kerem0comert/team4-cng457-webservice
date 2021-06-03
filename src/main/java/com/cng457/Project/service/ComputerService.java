@@ -13,11 +13,11 @@ public class ComputerService {
     @Autowired
     ComputerRepository computerRepository;
 
-    public Computer saveComputer(Computer c){
+    public Computer saveComputer(Computer c) {
         return computerRepository.save(c);
     }
 
-    public Computer getComputer(int id){
+    public Computer getComputer(int id) {
         return computerRepository.findById(id).orElse(null);
     }
 
@@ -31,5 +31,10 @@ public class ComputerService {
 
     public List<Computer> getComputerWithBrandName(String brandName) {
         return computerRepository.getComputerWithBrandName(brandName);
+    }
+
+    public List<Computer> getComputerByPredicate(List<Computer> computers) {
+        return computers;
+
     }
 }
