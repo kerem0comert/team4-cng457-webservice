@@ -16,6 +16,6 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer> {
     @Query(value = "SELECT * FROM phone ph, product p WHERE ph.product_id=p.product_id AND ph.product_id LIKE %?1% ", nativeQuery = true)
     public List<Phone> getPhoneWithId(int id);
 
-    @Query(value = "SELECT * FROM phone ph, product p WHERE ph.product_id=p.product_id AND p.brand_id IN (SELECT brand_id FROM brand b WHERE b.brand_name LIKE %:brandName%)", nativeQuery = true)
+    @Query(value = "SELECT * FROM phone ph, product p WHERE ph.product_id=p.product_id AND p.brand_brand_id IN (SELECT brand_id FROM brand b WHERE b.brand_name LIKE %:brandName%)", nativeQuery = true)
     public List<Phone> getPhoneWithBrandName(String brandName);
 }
