@@ -33,4 +33,9 @@ public class PhoneService {
     public List<Phone> getPhoneWithBrandName(String brandName) {
         return phoneRepository.getPhoneWithBrandName(brandName);
     }
+
+    public List<Phone> getPhoneByPredicate(List<Phone> phone) {
+        return phone;
+
+    }
 }
