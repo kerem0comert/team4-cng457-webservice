@@ -15,7 +15,7 @@ public class ReviewController {
         return reviewService.saveReview(r);
     }
 
-    @GetMapping("/getreview/{review_id}")
+    @GetMapping("/getreview/{id}")
     public Review getReview(@PathVariable int id){
         return reviewService.getReview(id);
     }
