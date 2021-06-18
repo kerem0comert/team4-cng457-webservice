@@ -26,6 +26,7 @@ public abstract class Product {
     private String model;
     private String batteryLife;
     private String screenSize;
+    private int price;
 
     @OneToMany(
             mappedBy = "product",
