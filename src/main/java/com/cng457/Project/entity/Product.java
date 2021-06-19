@@ -1,6 +1,8 @@
 package com.cng457.Project.entity;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "productId", scope = Product.class)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY, property = "type") @JsonSubTypes({
 
@@ -41,7 +42,7 @@ public abstract class Product {
             inverseJoinColumns = @JoinColumn (name = "efId", updatable=false,insertable=false, nullable = false))
     private List<ExtraFeatures> extraFeaturesList;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "brandId")
     private Brand brand;
 }
