@@ -24,7 +24,7 @@ import java.util.List;
 public abstract class Product {
     @Id private int productId;
     private String model;
-    private String batteryLife;
+    private int batteryLife;
     private String screenSize;
     private int price;
 

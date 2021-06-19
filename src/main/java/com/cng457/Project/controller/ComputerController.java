@@ -41,7 +41,7 @@ public class ComputerController {
 
     @GetMapping("/getcomputer")
     public List<Computer> getComputerByPredicate(@RequestParam(required = false) String model,
-                                                 @RequestParam(required = false) String batteryLife,
+                                                 @RequestParam(required = false) Integer batteryLife,
                                                  @RequestParam(required = false) String screenSize,
                                                  @RequestParam(required = false) String screenResolution,
                                                  @RequestParam(required = false) String processor,
@@ -57,7 +57,7 @@ public class ComputerController {
         }
         if (batteryLife != null) {
             computers = computers.stream()
-                    .filter(x -> x.getBatteryLife().equals(batteryLife))
+                    .filter(x -> batteryLife.equals(x.getBatteryLife()))
                     .collect(Collectors.toList());
         }
         if (screenSize != null) {

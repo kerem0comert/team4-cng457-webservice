@@ -42,7 +42,7 @@ public class PhoneController {
 
     @GetMapping("/getphone")
     public List<Phone> getPhoneByPredicate(@RequestParam(required = false) String model,
-                                                 @RequestParam(required = false) String batteryLife,
+                                                 @RequestParam(required = false) Integer batteryLife,
                                                  @RequestParam(required = false) String screenSize,
                                                  @RequestParam(required = false) Integer internalMemory,
                                                  @RequestParam(required = false) String extraFeatures,
@@ -55,7 +55,7 @@ public class PhoneController {
         }
         if (batteryLife != null) {
             phones = phones.stream()
-                    .filter(x -> x.getBatteryLife().equals(batteryLife))
+                    .filter(x -> batteryLife.equals(x.getBatteryLife()))
                     .collect(Collectors.toList());
         }
         if (screenSize != null) {
