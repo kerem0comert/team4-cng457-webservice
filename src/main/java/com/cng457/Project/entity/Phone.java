@@ -12,6 +12,6 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @Entity
 @JsonTypeName("phone")
-public class Phone extends Product{
+public class Phone extends Product {
     private int internalMemory;
 }

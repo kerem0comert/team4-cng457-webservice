@@ -11,14 +11,13 @@ public class ReviewService {
     @Autowired
     ReviewRepository reviewRepository;
 
-    public Review saveReview(Review r){
+    public Review saveReview(Review r) {
         return reviewRepository.save(r);
     }
 
-    public Review getReview(int id){
+    public Review getReview(int id) {
         return reviewRepository.findById(id).orElse(null);
     }
-
 
 
 }

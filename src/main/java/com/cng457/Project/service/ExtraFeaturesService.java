@@ -10,11 +10,11 @@ public class ExtraFeaturesService {
     @Autowired
     ExtraFeaturesRepository extraFeaturesRepository;
 
-    public ExtraFeatures saveExtraFeatures(ExtraFeatures ef){
+    public ExtraFeatures saveExtraFeatures(ExtraFeatures ef) {
         return extraFeaturesRepository.save(ef);
     }
 
-    public ExtraFeatures getExtraFeatures(int efId){
+    public ExtraFeatures getExtraFeatures(int efId) {
         return extraFeaturesRepository.findById(efId).orElse(null);
     }
 }

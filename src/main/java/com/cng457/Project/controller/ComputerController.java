@@ -77,7 +77,7 @@ public class ComputerController {
         }
         if (memory != null) {
             computers = computers.stream()
-                    .filter(x ->  memory.equals(x.getStorageCapacity()))
+                    .filter(x -> memory.equals(x.getStorageCapacity()))
                     .collect(Collectors.toList());
         }
         if (storageCapacity != null) {
@@ -88,7 +88,7 @@ public class ComputerController {
         if (extraFeatures != null) {
             String[] extraFeaturesList = extraFeatures.split(",");
 
-            for (String theExtraFeature: extraFeaturesList) {
+            for (String theExtraFeature : extraFeaturesList) {
                 computers = computers.stream()
                         .filter(x -> x.getExtraFeaturesList().stream().anyMatch(t -> t.getFeatureName().equals(theExtraFeature)))
                         .collect(Collectors.toList());

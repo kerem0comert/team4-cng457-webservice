@@ -1,7 +1,5 @@
 package com.cng457.Project.controller;
 
-import com.cng457.Project.entity.Brand;
-import com.cng457.Project.entity.Computer;
 import com.cng457.Project.entity.Phone;
 import com.cng457.Project.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +14,17 @@ public class PhoneController {
     PhoneService phoneService;
 
     @PostMapping("/addphone")
-    public Phone savePhone(@RequestBody Phone p){
+    public Phone savePhone(@RequestBody Phone p) {
         return phoneService.savePhone(p);
     }
 
     @GetMapping("/getphone/{id}")
-    public Phone getPhone(@PathVariable Integer id){
+    public Phone getPhone(@PathVariable Integer id) {
         return phoneService.getPhone(id);
     }
 
     @GetMapping("/getallphones")
-    public List<Phone> getAllPhones(){
+    public List<Phone> getAllPhones() {
         return phoneService.getAllPhones();
     }
 
@@ -42,11 +40,11 @@ public class PhoneController {
 
     @GetMapping("/getphone")
     public List<Phone> getPhoneByPredicate(@RequestParam(required = false) String model,
-                                                 @RequestParam(required = false) Integer batteryLife,
-                                                 @RequestParam(required = false) String screenSize,
-                                                 @RequestParam(required = false) Integer internalMemory,
-                                                 @RequestParam(required = false) String extraFeatures,
-                                                 @RequestParam(required = false) String brand) {
+                                           @RequestParam(required = false) Integer batteryLife,
+                                           @RequestParam(required = false) String screenSize,
+                                           @RequestParam(required = false) Integer internalMemory,
+                                           @RequestParam(required = false) String extraFeatures,
+                                           @RequestParam(required = false) String brand) {
         List<Phone> phones = phoneService.getAllPhones();
         if (model != null) {
             phones = phones.stream()
@@ -76,7 +74,7 @@ public class PhoneController {
         if (extraFeatures != null) {
             String[] extraFeaturesList = extraFeatures.split(",");
 
-            for (String theExtraFeature: extraFeaturesList) {
+            for (String theExtraFeature : extraFeaturesList) {
                 phones = phones.stream()
                         .filter(x -> x.getExtraFeaturesList().stream().anyMatch(t -> t.getFeatureName().equals(theExtraFeature)))
                         .collect(Collectors.toList());

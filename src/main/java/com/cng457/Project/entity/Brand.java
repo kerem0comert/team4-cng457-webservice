@@ -17,7 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class Brand {
-    @Id private int brandId;
+    @Id
+    private int brandId;
     private String brandName;
     
     @JsonBackReference

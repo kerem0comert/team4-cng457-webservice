@@ -1,6 +1,5 @@
 package com.cng457.Project.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
@@ -17,13 +16,15 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY, property = "type") @JsonSubTypes({
+        include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
 
         @JsonSubTypes.Type(value = Computer.class, name = "computer"),
         @JsonSubTypes.Type(value = Phone.class, name = "phone")
 })
 public abstract class Product {
-    @Id private int productId;
+    @Id
+    private int productId;
     private String model;
     private int batteryLife;
     private String screenSize;
@@ -36,10 +37,10 @@ public abstract class Product {
     )
     private List<Review> reviewList = new ArrayList<>();
 
-    @ManyToMany (fetch = FetchType.EAGER)
-    @JoinTable (name = "ProductExtraFeatures",
-            joinColumns = @JoinColumn (name = "productId", updatable=false,insertable=false, nullable = false),
-            inverseJoinColumns = @JoinColumn (name = "efId", updatable=false,insertable=false, nullable = false))
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "ProductExtraFeatures",
+            joinColumns = @JoinColumn(name = "productId", updatable = false, insertable = false, nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "efId", updatable = false, insertable = false, nullable = false))
     private List<ExtraFeatures> extraFeaturesList;
 
     @ManyToOne(fetch = FetchType.EAGER)

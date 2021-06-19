@@ -10,11 +10,11 @@ public class BrandService {
     @Autowired
     BrandRepository brandRepository;
 
-    public Brand saveBrand(Brand b){
+    public Brand saveBrand(Brand b) {
         return brandRepository.save(b);
     }
 
-    public Brand getBrand(int id){
+    public Brand getBrand(int id) {
         return brandRepository.findById(id).orElse(null);
     }
 }

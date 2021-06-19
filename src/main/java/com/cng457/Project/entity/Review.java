@@ -12,7 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class Review {
-    @Id private int reviewId;
+    @Id
+    private int reviewId;
     private int rating;
     private String comment;
 

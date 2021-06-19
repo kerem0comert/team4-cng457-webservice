@@ -11,12 +11,12 @@ public class ReviewController {
     ReviewService reviewService;
 
     @PostMapping("/addReview")
-    public Review saveReview(@RequestBody Review r){
+    public Review saveReview(@RequestBody Review r) {
         return reviewService.saveReview(r);
     }
 
     @GetMapping("/getreview/{id}")
-    public Review getReview(@PathVariable int id){
+    public Review getReview(@PathVariable int id) {
         return reviewService.getReview(id);
     }
 

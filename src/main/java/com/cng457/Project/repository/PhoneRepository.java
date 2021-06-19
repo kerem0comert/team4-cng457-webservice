@@ -1,7 +1,5 @@
 package com.cng457.Project.repository;
 
-import com.cng457.Project.entity.Brand;
-import com.cng457.Project.entity.Computer;
 import com.cng457.Project.entity.Phone;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

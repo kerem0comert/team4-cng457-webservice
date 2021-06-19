@@ -1,7 +1,6 @@
 package com.cng457.Project.service;
 
 import com.cng457.Project.entity.Computer;
-import com.cng457.Project.entity.Phone;
 import com.cng457.Project.repository.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @Entity
 @JsonTypeName("computer")
-public class Computer extends Product{
+public class Computer extends Product {
     private String screenResolution;
     private String processor;
     private int memory;

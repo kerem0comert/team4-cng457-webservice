@@ -16,12 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class ExtraFeatures {
-    @Id private int efId;
+    @Id
+    private int efId;
     private String description;
     private String featureName;
 
     @JsonBackReference
-    @ManyToMany (mappedBy = "extraFeaturesList", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "extraFeaturesList", fetch = FetchType.LAZY)
     private List<Product> productList;
 
 }
