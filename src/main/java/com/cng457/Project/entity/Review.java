@@ -19,5 +19,6 @@ public class Review {
     private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "productId")
     private Product product;
 }

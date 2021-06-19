@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface PhoneRepository extends JpaRepository<Phone, Integer> {
 
-    @Query(value = "SELECT * FROM phone ph, product p WHERE ph.product_id=p.product_id ", nativeQuery = true)
+    @Query(value = "SELECT * FROM phone ph INNER JOIN product p USING(product_id)", nativeQuery = true)
     public List<Phone> getAllPhones();
 
     @Query(value = "SELECT * FROM phone ph, product p WHERE ph.product_id=p.product_id AND ph.product_id LIKE %?1% ", nativeQuery = true)

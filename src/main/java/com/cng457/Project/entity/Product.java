@@ -42,6 +42,6 @@ public abstract class Product {
     private List<ExtraFeatures> extraFeaturesList;
 
     @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="brandId") This is not necessary and causes some inconsistency
+    @JoinColumn(name = "brandId")
     private Brand brand;
 }

@@ -19,7 +19,7 @@ public class ExtraFeatures {
     private String description;
     private String featureName;
 
-    @ManyToMany (mappedBy = "extraFeaturesList", fetch = FetchType.EAGER)
+    @ManyToMany (mappedBy = "extraFeaturesList", fetch = FetchType.LAZY)
     private List<Product> productList;
 
 }
