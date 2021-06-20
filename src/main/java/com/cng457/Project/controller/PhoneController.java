@@ -1,10 +1,13 @@
 package com.cng457.Project.controller;
 
+import com.cng457.Project.entity.Brand;
 import com.cng457.Project.entity.Phone;
 import com.cng457.Project.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -81,8 +84,9 @@ public class PhoneController {
             }
         }
         if (brand != null) {
+            List<String> brandList = Arrays.asList(brand.split(","));
             phones = phones.stream()
-                    .filter(x -> x.getBrand().getBrandName().equals(brand))
+                    .filter(x -> brandList.contains(x.getBrand().getBrandName()))
                     .collect(Collectors.toList());
         }
         return phones;
