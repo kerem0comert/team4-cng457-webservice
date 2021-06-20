@@ -32,6 +32,10 @@ public class PhoneService {
         return phoneRepository.getPhoneWithBrandName(brandName);
     }
 
+    public List<String> getAllScreenSizesForPhones() {
+        return phoneRepository.getAllScreenSizesForPhones();
+    }
+
     public List<Phone> getPhoneByPredicate(List<Phone> phone) {
         return phone;
 

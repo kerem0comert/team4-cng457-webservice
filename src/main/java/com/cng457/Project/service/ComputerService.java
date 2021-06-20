@@ -32,6 +32,10 @@ public class ComputerService {
         return computerRepository.getComputerWithBrandName(brandName);
     }
 
+    public List<String> getAllScreenSizesForComputers() {
+        return computerRepository.getAllScreenSizesForComputers();
+    }
+
     public List<Computer> getComputerByPredicate(List<Computer> computers) {
         return computers;
 
