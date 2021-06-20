@@ -38,6 +38,11 @@ public class ComputerController {
         return computerService.getAllScreenResolutionsForComputers();
     }
 
+    @GetMapping("/getAllProcessorsForComputers")
+    public List<String> getAllProcessorsForComputers() {
+        return computerService.getAllProcessorsForComputers();
+    }
+
     @GetMapping("/getComputerWithId/{id}")
     public List<Computer> getComputerWithId(@PathVariable int id) {
         return computerService.getComputerWithId(id);

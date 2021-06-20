@@ -40,6 +40,10 @@ public class ComputerService {
         return computerRepository.getAllScreenResolutionsForComputers();
     }
 
+    public List<String> getAllProcessorsForComputers() {
+        return computerRepository.getAllProcessorsForComputers();
+    }
+
     public List<Computer> getComputerByPredicate(List<Computer> computers) {
         return computers;
 
