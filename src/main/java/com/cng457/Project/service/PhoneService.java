@@ -24,12 +24,8 @@ public class PhoneService {
         return phoneRepository.getAllPhones();
     }
 
-    public List<Phone> getPhoneWithId(int id) {
-        return phoneRepository.getPhoneWithId(id);
-    }
-
-    public List<Phone> getPhoneWithBrandName(String brandName) {
-        return phoneRepository.getPhoneWithBrandName(brandName);
+    public List<String> getAllScreenSizesForPhones() {
+        return phoneRepository.getAllScreenSizesForPhones();
     }
 
     public List<Phone> getPhoneByPredicate(List<Phone> phone) {

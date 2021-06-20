@@ -16,36 +16,35 @@ public class PhoneController {
     @Autowired
     PhoneService phoneService;
 
-    @PostMapping("/addphone")
+    @PostMapping("/addPhone")
     public Phone savePhone(@RequestBody Phone p) {
         return phoneService.savePhone(p);
     }
 
-    @GetMapping("/getphone/{id}")
+    @GetMapping("/getPhone/{id}")
     public Phone getPhone(@PathVariable Integer id) {
         return phoneService.getPhone(id);
     }
 
-    @GetMapping("/getallphones")
+    @GetMapping("/getAllPhones")
     public List<Phone> getAllPhones() {
         return phoneService.getAllPhones();
     }
 
-    @GetMapping("/getphonewithid/{id}")
-    public List<Phone> getPhoneWithId(@PathVariable int id) {
-        return phoneService.getPhoneWithId(id);
+    @GetMapping("/getAllScreenSizesForPhones")
+    public List<String> getAllScreenSizesForPhones() {
+        return phoneService.getAllScreenSizesForPhones();
     }
 
-    @GetMapping("/getphonewithbrandname/{brandName}")
-    public List<Phone> getPhoneWithBrandName(@PathVariable String brandName) {
-        return phoneService.getPhoneWithBrandName(brandName);
-    }
-
-    @GetMapping("/getphone")
+    @GetMapping("/getPhone")
     public List<Phone> getPhoneByPredicate(@RequestParam(required = false) String model,
-                                           @RequestParam(required = false) Integer batteryLife,
+                                           @RequestParam(required = false) Integer minPrice,
+                                           @RequestParam(required = false) Integer maxPrice,
+                                           @RequestParam(required = false) Integer minBatteryLife,
+                                           @RequestParam(required = false) Integer maxBatteryLife,
                                            @RequestParam(required = false) String screenSize,
-                                           @RequestParam(required = false) Integer internalMemory,
+                                           @RequestParam(required = false) Integer minInternalMemory,
+                                           @RequestParam(required = false) Integer maxInternalMemory,
                                            @RequestParam(required = false) String extraFeatures,
                                            @RequestParam(required = false) String brand) {
         List<Phone> phones = phoneService.getAllPhones();
@@ -54,9 +53,24 @@ public class PhoneController {
                     .filter(x -> x.getModel().equals(model))
                     .collect(Collectors.toList());
         }
-        if (batteryLife != null) {
+        if (minPrice != null) {
             phones = phones.stream()
-                    .filter(x -> batteryLife.equals(x.getBatteryLife()))
+                    .filter(x -> minPrice.intValue() <= x.getPrice())
+                    .collect(Collectors.toList());
+        }
+        if (maxPrice != null) {
+            phones = phones.stream()
+                    .filter(x -> maxPrice.intValue() >= x.getPrice())
+                    .collect(Collectors.toList());
+        }
+        if (minBatteryLife != null) {
+            phones = phones.stream()
+                    .filter(x -> minBatteryLife.intValue() <= x.getBatteryLife())
+                    .collect(Collectors.toList());
+        }
+        if (maxBatteryLife != null) {
+            phones = phones.stream()
+                    .filter(x -> maxBatteryLife.intValue() >= x.getBatteryLife())
                     .collect(Collectors.toList());
         }
         if (screenSize != null) {
@@ -64,14 +78,14 @@ public class PhoneController {
                     .filter(x -> x.getScreenSize().equals(screenSize))
                     .collect(Collectors.toList());
         }
-        if (screenSize != null) {
+        if (minInternalMemory != null) {
             phones = phones.stream()
-                    .filter(x -> x.getScreenSize().equals(screenSize))
+                    .filter(x -> minInternalMemory.intValue() <= x.getInternalMemory())
                     .collect(Collectors.toList());
         }
-        if (internalMemory != null) {
+        if (maxInternalMemory != null) {
             phones = phones.stream()
-                    .filter(x -> internalMemory.equals(x.getInternalMemory()))
+                    .filter(x -> maxInternalMemory.intValue() >= x.getInternalMemory())
                     .collect(Collectors.toList());
         }
         if (extraFeatures != null) {

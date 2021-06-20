@@ -13,40 +13,49 @@ public class ComputerController {
     @Autowired
     ComputerService computerService;
 
-    @PostMapping("/addcomputer")
+    @PostMapping("/addComputer")
     public Computer saveComputer(@RequestBody Computer c) {
         return computerService.saveComputer(c);
     }
 
-    @GetMapping("/getcomputer/{id}")
+    @GetMapping("/getComputer/{id}")
     public Computer getComputer(@PathVariable Integer id) {
         return computerService.getComputer(id);
     }
 
-    @GetMapping("/getallcomputers")
+    @GetMapping("/getAllComputers")
     public List<Computer> getAllComputers() {
         return computerService.getAllComputers();
     }
 
-    @GetMapping("/getcomputerwithid/{id}")
-    public List<Computer> getComputerWithId(@PathVariable int id) {
-        return computerService.getComputerWithId(id);
+    @GetMapping("/getAllScreenSizesForComputers")
+    public List<String> getAllScreenSizesForComputers() {
+        return computerService.getAllScreenSizesForComputers();
     }
 
-
-    @GetMapping("/getcomputerwithbrandname/{brandName}")
-    public List<Computer> getComputerWithBrandName(@PathVariable String brandName) {
-        return computerService.getComputerWithBrandName(brandName);
+    @GetMapping("/getAllScreenResolutionsForComputers")
+    public List<String> getAllScreenResolutionsForComputers() {
+        return computerService.getAllScreenResolutionsForComputers();
     }
 
-    @GetMapping("/getcomputer")
+    @GetMapping("/getAllProcessorsForComputers")
+    public List<String> getAllProcessorsForComputers() {
+        return computerService.getAllProcessorsForComputers();
+    }
+
+    @GetMapping("/getComputer")
     public List<Computer> getComputerByPredicate(@RequestParam(required = false) String model,
-                                                 @RequestParam(required = false) Integer batteryLife,
+                                                 @RequestParam(required = false) Integer minPrice,
+                                                 @RequestParam(required = false) Integer maxPrice,
+                                                 @RequestParam(required = false) Integer minBatteryLife,
+                                                 @RequestParam(required = false) Integer maxBatteryLife,
                                                  @RequestParam(required = false) String screenSize,
                                                  @RequestParam(required = false) String screenResolution,
                                                  @RequestParam(required = false) String processor,
-                                                 @RequestParam(required = false) Integer memory,
-                                                 @RequestParam(required = false) Integer storageCapacity,
+                                                 @RequestParam(required = false) Integer minMemory,
+                                                 @RequestParam(required = false) Integer maxMemory,
+                                                 @RequestParam(required = false) Integer minStorageCapacity,
+                                                 @RequestParam(required = false) Integer maxStorageCapacity,
                                                  @RequestParam(required = false) String extraFeatures,
                                                  @RequestParam(required = false) String brand) {
         List<Computer> computers = computerService.getAllComputers();
@@ -55,9 +64,24 @@ public class ComputerController {
                     .filter(x -> x.getModel().equals(model))
                     .collect(Collectors.toList());
         }
-        if (batteryLife != null) {
+        if (minPrice != null) {
             computers = computers.stream()
-                    .filter(x -> batteryLife.equals(x.getBatteryLife()))
+                    .filter(x -> minPrice.intValue() <= x.getPrice())
+                    .collect(Collectors.toList());
+        }
+        if (maxPrice != null) {
+            computers = computers.stream()
+                    .filter(x -> maxPrice.intValue() >= x.getPrice())
+                    .collect(Collectors.toList());
+        }
+        if (minBatteryLife != null) {
+            computers = computers.stream()
+                    .filter(x -> minBatteryLife.intValue() <= x.getBatteryLife())
+                    .collect(Collectors.toList());
+        }
+        if (maxBatteryLife != null) {
+            computers = computers.stream()
+                    .filter(x -> maxBatteryLife.intValue() >= x.getBatteryLife())
                     .collect(Collectors.toList());
         }
         if (screenSize != null) {
@@ -75,14 +99,24 @@ public class ComputerController {
                     .filter(x -> x.getProcessor().equals(processor))
                     .collect(Collectors.toList());
         }
-        if (memory != null) {
+        if (minMemory != null) {
             computers = computers.stream()
-                    .filter(x -> memory.equals(x.getStorageCapacity()))
+                    .filter(x -> minMemory.intValue() <= x.getMemory())
                     .collect(Collectors.toList());
         }
-        if (storageCapacity != null) {
+        if (maxMemory != null) {
             computers = computers.stream()
-                    .filter(x -> storageCapacity.equals(x.getStorageCapacity()))
+                    .filter(x -> maxMemory.intValue() >= x.getMemory())
+                    .collect(Collectors.toList());
+        }
+        if (minStorageCapacity != null) {
+            computers = computers.stream()
+                    .filter(x -> minStorageCapacity.intValue() <= x.getStorageCapacity())
+                    .collect(Collectors.toList());
+        }
+        if (maxStorageCapacity != null) {
+            computers = computers.stream()
+                    .filter(x -> maxStorageCapacity.intValue() >= x.getStorageCapacity())
                     .collect(Collectors.toList());
         }
         if (extraFeatures != null) {
