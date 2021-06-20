@@ -15,7 +15,7 @@ public class BrandController {
         return brandService.saveBrand(b);
     }
 
-    @GetMapping("/getbrand/{id}")
+    @GetMapping("/getBrand/{id}")
     public Brand getBrand(@PathVariable int id) {
         return brandService.getBrand(id);
     }

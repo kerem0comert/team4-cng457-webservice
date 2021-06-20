@@ -13,32 +13,32 @@ public class PhoneController {
     @Autowired
     PhoneService phoneService;
 
-    @PostMapping("/addphone")
+    @PostMapping("/addPhone")
     public Phone savePhone(@RequestBody Phone p) {
         return phoneService.savePhone(p);
     }
 
-    @GetMapping("/getphone/{id}")
+    @GetMapping("/getPhone/{id}")
     public Phone getPhone(@PathVariable Integer id) {
         return phoneService.getPhone(id);
     }
 
-    @GetMapping("/getallphones")
+    @GetMapping("/getAllPhones")
     public List<Phone> getAllPhones() {
         return phoneService.getAllPhones();
     }
 
-    @GetMapping("/getphonewithid/{id}")
+    @GetMapping("/getPhoneWithId/{id}")
     public List<Phone> getPhoneWithId(@PathVariable int id) {
         return phoneService.getPhoneWithId(id);
     }
 
-    @GetMapping("/getphonewithbrandname/{brandName}")
+    @GetMapping("/getPhoneWithBrandName/{brandName}")
     public List<Phone> getPhoneWithBrandName(@PathVariable String brandName) {
         return phoneService.getPhoneWithBrandName(brandName);
     }
 
-    @GetMapping("/getphone")
+    @GetMapping("/getPhone")
     public List<Phone> getPhoneByPredicate(@RequestParam(required = false) String model,
                                            @RequestParam(required = false) Integer batteryLife,
                                            @RequestParam(required = false) String screenSize,

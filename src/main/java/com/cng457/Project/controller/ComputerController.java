@@ -13,33 +13,33 @@ public class ComputerController {
     @Autowired
     ComputerService computerService;
 
-    @PostMapping("/addcomputer")
+    @PostMapping("/addComputer")
     public Computer saveComputer(@RequestBody Computer c) {
         return computerService.saveComputer(c);
     }
 
-    @GetMapping("/getcomputer/{id}")
+    @GetMapping("/getComputer/{id}")
     public Computer getComputer(@PathVariable Integer id) {
         return computerService.getComputer(id);
     }
 
-    @GetMapping("/getallcomputers")
+    @GetMapping("/getAllComputers")
     public List<Computer> getAllComputers() {
         return computerService.getAllComputers();
     }
 
-    @GetMapping("/getcomputerwithid/{id}")
+    @GetMapping("/getComputerWithId/{id}")
     public List<Computer> getComputerWithId(@PathVariable int id) {
         return computerService.getComputerWithId(id);
     }
 
 
-    @GetMapping("/getcomputerwithbrandname/{brandName}")
+    @GetMapping("/getComputerWithBrandName/{brandName}")
     public List<Computer> getComputerWithBrandName(@PathVariable String brandName) {
         return computerService.getComputerWithBrandName(brandName);
     }
 
-    @GetMapping("/getcomputer")
+    @GetMapping("/getComputer")
     public List<Computer> getComputerByPredicate(@RequestParam(required = false) String model,
                                                  @RequestParam(required = false) Integer batteryLife,
                                                  @RequestParam(required = false) String screenSize,
