@@ -20,4 +20,7 @@ public interface ComputerRepository extends JpaRepository<Computer, Integer> {
     //@Query(value = "SELECT DISTINCT(b.brand_name) FROM brand b INNER JOIN product pr USING(brand_id) INNER JOIN computer ph USING(product_id)", nativeQuery = true)
     @Query(value = "SELECT DISTINCT(screen_size) FROM product pr INNER JOIN computer ph USING(product_id)", nativeQuery = true)
     public List<String> getAllScreenSizesForComputers();
+
+    @Query(value = "SELECT DISTINCT(screen_resolution) FROM product pr INNER JOIN computer ph USING(product_id)", nativeQuery = true)
+    public List<String> getAllScreenResolutionsForComputers();
 }

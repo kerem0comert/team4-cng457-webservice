@@ -33,6 +33,11 @@ public class ComputerController {
         return computerService.getAllScreenSizesForComputers();
     }
 
+    @GetMapping("/getAllScreenResolutionsForComputers")
+    public List<String> getAllScreenResolutionsForComputers() {
+        return computerService.getAllScreenResolutionsForComputers();
+    }
+
     @GetMapping("/getComputerWithId/{id}")
     public List<Computer> getComputerWithId(@PathVariable int id) {
         return computerService.getComputerWithId(id);
