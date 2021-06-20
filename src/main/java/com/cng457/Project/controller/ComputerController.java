@@ -43,17 +43,6 @@ public class ComputerController {
         return computerService.getAllProcessorsForComputers();
     }
 
-    @GetMapping("/getComputerWithId/{id}")
-    public List<Computer> getComputerWithId(@PathVariable int id) {
-        return computerService.getComputerWithId(id);
-    }
-
-
-    @GetMapping("/getComputerWithBrandName/{brandName}")
-    public List<Computer> getComputerWithBrandName(@PathVariable String brandName) {
-        return computerService.getComputerWithBrandName(brandName);
-    }
-
     @GetMapping("/getComputer")
     public List<Computer> getComputerByPredicate(@RequestParam(required = false) String model,
                                                  @RequestParam(required = false) Integer minPrice,

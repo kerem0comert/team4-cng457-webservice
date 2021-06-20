@@ -28,16 +28,6 @@ public class PhoneController {
         return phoneService.getAllPhones();
     }
 
-    @GetMapping("/getPhoneWithId/{id}")
-    public List<Phone> getPhoneWithId(@PathVariable int id) {
-        return phoneService.getPhoneWithId(id);
-    }
-
-    @GetMapping("/getPhoneWithBrandName/{brandName}")
-    public List<Phone> getPhoneWithBrandName(@PathVariable String brandName) {
-        return phoneService.getPhoneWithBrandName(brandName);
-    }
-
     @GetMapping("/getAllScreenSizesForPhones")
     public List<String> getAllScreenSizesForPhones() {
         return phoneService.getAllScreenSizesForPhones();

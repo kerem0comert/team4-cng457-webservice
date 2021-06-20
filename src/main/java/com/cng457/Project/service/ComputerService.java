@@ -24,14 +24,6 @@ public class ComputerService {
         return computerRepository.getAllComputers();
     }
 
-    public List<Computer> getComputerWithId(int id) {
-        return computerRepository.getComputerWithId(id);
-    }
-
-    public List<Computer> getComputerWithBrandName(String brandName) {
-        return computerRepository.getComputerWithBrandName(brandName);
-    }
-
     public List<String> getAllScreenSizesForComputers() {
         return computerRepository.getAllScreenSizesForComputers();
     }
