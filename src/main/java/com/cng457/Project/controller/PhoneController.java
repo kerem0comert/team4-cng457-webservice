@@ -11,6 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Did not generate JavaDoc for all the getters to each URL endpoint, as they are self-explanatory.
+ */
 @RestController
 public class PhoneController {
     @Autowired
@@ -36,6 +40,24 @@ public class PhoneController {
         return phoneService.getAllScreenSizesForPhones();
     }
 
+    /**
+     * First, we get all phones from the service.
+     * There are certain predicates, all of them specified as parameters below. For each of them,
+     * we made use of Java 8's Stream functionality to filter out the ones as specified in the attributes
+     * when the method call gets made. Of course, none of the field is mandatory, so if we get null for any
+     * of them we simply pass the filtering for that attribute.
+     * @param model
+     * @param minPrice
+     * @param maxPrice
+     * @param minBatteryLife
+     * @param maxBatteryLife
+     * @param screenSize
+     * @param minInternalMemory
+     * @param maxInternalMemory
+     * @param extraFeatures
+     * @param brand
+     * @return a list of {@link Phone} objects, that pass the applied filter.
+     */
     @GetMapping("/getPhone")
     public List<Phone> getPhoneByPredicate(@RequestParam(required = false) String model,
                                            @RequestParam(required = false) Integer minPrice,

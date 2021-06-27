@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Did not generate JavaDoc for all the getters to each URL endpoint, as they are self-explanatory.
+ */
 @RestController
 public class ComputerController {
     @Autowired
@@ -42,6 +45,30 @@ public class ComputerController {
     public List<String> getAllProcessorsForComputers() {
         return computerService.getAllProcessorsForComputers();
     }
+
+    /**
+     *
+     * First, we get all computers from the service.
+     * There are certain predicates, all of them specified as parameters below. For each of them,
+     * we made use of Java 8's Stream functionality to filter out the ones as specified in the attributes
+     * when the method call gets made. Of course, none of the field is mandatory, so if we get null for any
+     * of them we simply pass the filtering for that attribute.
+     * @param model
+     * @param minPrice
+     * @param maxPrice
+     * @param minBatteryLife
+     * @param maxBatteryLife
+     * @param screenSize
+     * @param screenResolution
+     * @param processor
+     * @param minMemory
+     * @param maxMemory
+     * @param minStorageCapacity
+     * @param maxStorageCapacity
+     * @param extraFeatures
+     * @param brand
+     * @return a list of {@link Computer} objects, that pass the applied filter.
+     */
 
     @GetMapping("/getComputer")
     public List<Computer> getComputerByPredicate(@RequestParam(required = false) String model,
